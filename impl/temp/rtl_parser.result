@@ -9,7 +9,7 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v",
-    "InstLine" : 13,
+    "InstLine" : 12,
     "InstName" : "gowin_plla",
     "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/gowin_pll/gowin_pll.v",
     "ModuleLine" : 10,
@@ -17,7 +17,7 @@
    },
    {
     "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v",
-    "InstLine" : 72,
+    "InstLine" : 68,
     "InstName" : "uart_comm",
     "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v",
     "ModuleLine" : 47,
@@ -61,7 +61,7 @@
    },
    {
     "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v",
-    "InstLine" : 98,
+    "InstLine" : 94,
     "InstName" : "uut",
     "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v",
     "ModuleLine" : 38,
@@ -3783,7 +3783,7 @@
    },
    {
     "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v",
-    "InstLine" : 106,
+    "InstLine" : 102,
     "InstName" : "uut2",
     "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v",
     "ModuleLine" : 38,

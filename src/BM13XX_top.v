@@ -61,9 +61,9 @@ module BM13XX_top (
     wire [95:0] tx_data;
     wire [31:0] tx_noncemin;
     wire [31:0] tx_noncemax;
-    wire rx_need_work;
-    wire rx_new_nonce;
-    wire [31:0] rx_golden_nonce;
+    reg rx_need_work;
+    reg rx_new_nonce;
+    reg [31:0] rx_golden_nonce;
 
     uart_comm uart_comm (
         // Hashing Clock Domain
@@ -116,8 +116,8 @@ module BM13XX_top (
 	wire [5:0] cnt_next;
 	wire [31:0] nonce_next;
 	wire feedback_next;
-    wire ncores = 4'd1;
-    wire core_id = 4'd0
+    wire [31:0] ncores = 32'd1;
+    wire [31:0] core_id = 32'd0;
 
 
 	assign cnt_next =  tx_new_work ? 6'd0 : (LOOP == 1) ? 6'd0 : (cnt + 6'd1) & (LOOP-1);
@@ -128,7 +128,6 @@ module BM13XX_top (
 	assign nonce_next =
 		tx_new_work ? tx_noncemin + core_id :
 		feedback_next ? nonce : (nonce + 32'd1 * ncores );
-    assign rx_need_work = tx_new_work ? 1'b0 : rx_need_work;
 
 	always @ (posedge hash_clk)
 	begin
@@ -142,12 +141,17 @@ module BM13XX_top (
 		// Give new data to the hasher
 		state <= midstate_buf;
 		data <= {384'h000002800000000000000000000000000000000000000000000000000000000000000000000000000000000080000000, nonce_next, data_buf[95:0]};
-        if(nonce_next + ncores < tx_noncemax) begin
-            nonce <= nonce_next;
-            rx_need_work <= 1'b0;
-        end else begin
+        if (tx_new_work) begin
+            // PRIORIDADE 1: O Chefe (UART) mandou trabalho novo!
+            nonce <= nonce_next;  // A sua matemática já garante que aqui é tx_noncemin + core_id
+            rx_need_work <= 1'b0; // Abaixa a bandeira de pedir trabalho
+        end else if(nonce >= tx_noncemax) begin
             nonce <= nonce;
             rx_need_work <= 1'b1;
+        end else begin
+            // PRIORIDADE 3: Minerando normalmente...
+            nonce <= nonce_next;  // Vai somar +ncores graças ao seu assign lá em cima!
+            rx_need_work <= 1'b0;
         end
 
 		// Check to see if the last hash generated is valid.
