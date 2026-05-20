@@ -1,0 +1,12 @@
+IO_LOC "rst_n" J8; // antigo spi_miso gpio 19
+IO_PORT "rst_n" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "utx" L9; // antigo spi_mosi gpio 23
+IO_PORT "utx" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+//IO_LOC "spi_sck" F7; // spi_sck gpio 18
+//IO_PORT "spi_sck" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+IO_LOC "urx" J11; // antigo spi_cs gpio 5
+IO_PORT "urx" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+IO_LOC "clk_50m" E2;
+IO_PORT "clk_50m" IO_TYPE=LVCMOS33 DRIVE=OFF PULL_MODE=NONE BANK_VCCIO=3.3;
+IO_LOC "led_done" D7; 
+IO_PORT "led_done" IO_TYPE=LVCMOS33;

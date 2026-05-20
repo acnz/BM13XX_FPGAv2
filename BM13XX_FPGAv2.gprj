@@ -1,0 +1,21 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW5A-25A" pn="GW5A-LV25MG121NC1/I0">gw5a25a-002</Device>
+    <FileList>
+        <File path="src/BM13XX_top.v" type="file.verilog" enable="1"/>
+        <File path="src/fpgaminer_top.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_pll/gowin_pll.v" type="file.verilog" enable="1"/>
+        <File path="src/sha-256-functions.v" type="file.verilog" enable="1"/>
+        <File path="src/sha256_transform.v" type="file.verilog" enable="1"/>
+        <File path="src/uart_comm.v" type="file.verilog" enable="1"/>
+        <File path="src/uart_rx.v" type="file.verilog" enable="1"/>
+        <File path="src/uart_tx.v" type="file.verilog" enable="1"/>
+        <File path="src/uart_tx_fifo.v" type="file.verilog" enable="1"/>
+        <File path="src/virtual_wire.v" type="file.verilog" enable="1"/>
+        <File path="src/BM13XX_pins.cst" type="file.cst" enable="1"/>
+        <File path="src/BM13XX_FPGAv2.sdc" type="file.sdc" enable="1"/>
+    </FileList>
+</Project>

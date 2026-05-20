@@ -1,0 +1,39 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\fpgaminer_top.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha256_transform.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha-256-functions.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_comm.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_rx.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx_fifo.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\virtual_wire.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\gowin_pll\gowin_pll.v'
+WARN  (EX3786) : Assignment to input 'clk_50m'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":11)
+Compiling module 'BM13XX_top'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":3)
+Compiling module 'Gowin_PLL'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\gowin_pll\gowin_pll.v":10)
+Port is declared here("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":5)
+WARN  (EX1998) : Net 'hash_clk' does not have a driver("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":8)
+NOTE  (EX0101) : Current top module is "BM13XX_top"
+[5%] Running netlist conversion ...
+WARN  (CV0016) : Input clk_50m is unused("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":5)
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+WARN  (NL0002) : The module "Gowin_PLL" instantiated to "gowin_plla" is swept in optimizing("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":13)
+[95%] Generate netlist file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\gwsynthesis\BM13XX_FPGAv2.vg" completed
+[100%] Generate report file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\gwsynthesis\BM13XX_FPGAv2_syn.rpt.html" completed
+GowinSynthesis finish

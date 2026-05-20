@@ -1,0 +1,43 @@
+//
+//Written by GowinSynthesis
+//Tool Version "V1.9.10.03 Education (64-bit)"
+//Tue May 19 01:37:53 2026
+
+//Source file index table:
+//file0 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v"
+//file1 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/fpgaminer_top.v"
+//file2 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v"
+//file3 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha-256-functions.v"
+//file4 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v"
+//file5 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_rx.v"
+//file6 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_tx.v"
+//file7 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_tx_fifo.v"
+//file8 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/virtual_wire.v"
+//file9 "\C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/gowin_pll/gowin_pll.v"
+`pragma protect begin_protected
+`pragma protect version="2.3"
+`pragma protect author="default"
+`pragma protect author_info="default"
+`pragma protect encrypt_agent="GOWIN"
+`pragma protect encrypt_agent_info="GOWIN Encrypt Version 2.3"
+
+`pragma protect encoding=(enctype="base64", line_length=76, bytes=256)
+`pragma protect key_keyowner="GOWIN",key_keyname="GWK2023-09",key_method="rsa"
+`pragma protect key_block
+Ry/kNpb83BSbR3yNwVJAY8Z349xFJWMl7j3AYoC2gUQp+OovMu9b4xuynm3L3jzu92A8sXDxIGtP
+SqpMvZ0ttMi2bSPQtLHEw+vT4KqXBfCgVv14m+57DmgSnjspvTkgyNbtjep1yiA5+lYehMATDUG/
+qAYdk08wiX4IZ0iVTkt7r0nN+xarrEbyNi/itlriHpfbNDuRrEWZ6eAvMCljwjV9rz2b6756wP18
+VtgTjjzZWZZiyPQXDYqO63TFpbtqEqvThLuygdpoIKsU96bM/7bbDZ1nq97gR5sAa5Ti1AQLzWvx
+XHrDHN1JhBcOxv9KVp50QDJrpAtjEb4d5R7KLg==
+
+`pragma protect encoding=(enctype="base64", line_length=76, bytes=240)
+`pragma protect data_keyowner="default-ip-vendor"
+`pragma protect data_keyname="default-ip-key"
+`pragma protect data_method="aes128-cfb"
+`pragma protect data_block
+Tcy4LNa7k+Mc4XZ44UxICaMQmk1K+/xO/1XjmgSDCoz5roWXtMJj4imLKBN7cjNMCZvxo6ehZmp/
+eSLpGIsbEM7tigztggj5HvwyFumA2moL7cFiT4vc3AdT6ifD98rpD6yenTLt1PipKeMKYdaE5BHH
+5FIBgE+2opWnJoTW8MtZ9dz1XPIyMZOOlkmkwZOWZ9KGVKCpZM094PLwEvX/ryPYWFfO0qz3gbZ7
+3deiJS7iUJTOFiZv8gu+V8vrL2dISppoMGJn7+zY9ls8JDi7pYpPiXyf1AXc0Cqa7HbgbJrFrHoN
+hNFHeYIwNJ1Qe8+8
+`pragma protect end_protected
