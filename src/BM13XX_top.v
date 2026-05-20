@@ -9,15 +9,11 @@ module BM13XX_top (
 
 	//// PLL
 	wire hash_clk;
-	`ifndef SIM
-		Gowin_PLL gowin_plla(
-            .clkout0(hash_clk), //output clkout0
-            .clkin(clk_50m) //input clkin
-        );
-	`else
-		assign hash_clk = clk_50m;
-	`endif
-    
+    Gowin_PLL gowin_plla(
+        .clkout0(hash_clk), //output clkout0
+        .clkin(clk_50m) //input clkin
+    );
+
     reg [4:0] baud_counter = 5'd0;
     reg baud_clk = 1'b0;
     always @ (posedge clk_50m)
@@ -120,21 +116,19 @@ module BM13XX_top (
 	wire [5:0] cnt_next;
 	wire [31:0] nonce_next;
 	wire feedback_next;
-	`ifndef SIM
-		wire reset;
-		assign reset = 1'b0;
-	`else
-		reg reset = 1'b0;	// NOTE: Reset is not currently used in the actual FPGA; for simulation only.
-	`endif
+    wire ncores = 4'd1;
+    wire core_id = 4'd0
 
-	assign cnt_next =  reset ? 6'd0 : (LOOP == 1) ? 6'd0 : (cnt + 6'd1) & (LOOP-1);
+
+	assign cnt_next =  tx_new_work ? 6'd0 : (LOOP == 1) ? 6'd0 : (cnt + 6'd1) & (LOOP-1);
 	// On the first count (cnt==0), load data from previous stage (no feedback)
 	// on 1..LOOP-1, take feedback from current stage
 	// This reduces the throughput by a factor of (LOOP), but also reduces the design size by the same amount
 	assign feedback_next = (LOOP == 1) ? 1'b0 : (cnt_next != {(LOOP_LOG2){1'b0}});
 	assign nonce_next =
-		reset ? 32'd0 :
-		feedback_next ? nonce : (nonce + 32'd1);
+		tx_new_work ? tx_noncemin + core_id :
+		feedback_next ? nonce : (nonce + 32'd1 * ncores );
+    assign rx_need_work = tx_new_work ? 1'b0 : rx_need_work;
 
 	always @ (posedge hash_clk)
 	begin
@@ -148,9 +142,13 @@ module BM13XX_top (
 		// Give new data to the hasher
 		state <= midstate_buf;
 		data <= {384'h000002800000000000000000000000000000000000000000000000000000000000000000000000000000000080000000, nonce_next, data_buf[95:0]};
-		nonce <= nonce_next;
-        //rx_new_nonce <= nonce_next; // a uart decide se chegou no limite de nonces?
-
+        if(nonce_next + ncores < tx_noncemax) begin
+            nonce <= nonce_next;
+            rx_need_work <= 1'b0;
+        end else begin
+            nonce <= nonce;
+            rx_need_work <= 1'b1;
+        end
 
 		// Check to see if the last hash generated is valid.
 		is_golden_ticket <= (hash2[255:224] == 32'h00000000) && !feedback_d1;
@@ -158,13 +156,15 @@ module BM13XX_top (
 		begin
 			// TODO: Find a more compact calculation for this
 			if (LOOP == 1)
-				golden_nonce <= nonce - 32'd131;
+				rx_golden_nonce <= nonce - 32'd131;
 			else if (LOOP == 2)
-				golden_nonce <= nonce - 32'd66;
+				rx_golden_nonce <= nonce - 32'd66;
 			else
-				golden_nonce <= nonce - GOLDEN_NONCE_OFFSET;
-            rx_golden_nonce <= golden_nonce; // aqui ele adiciona o golden_nonce no tx_fifo
-		end
+				rx_golden_nonce <= nonce - GOLDEN_NONCE_OFFSET;
+            rx_new_nonce <= 1'b1; // Dispara o gatilho!
+		end else begin
+            rx_new_nonce <= 1'b0; // Fica quieto nos outros 99.99% do tempo
+        end
 	end
 
 
