@@ -9,11 +9,55 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v",
-    "InstLine" : 10,
+    "InstLine" : 13,
     "InstName" : "gowin_plla",
     "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/gowin_pll/gowin_pll.v",
     "ModuleLine" : 10,
     "ModuleName" : "Gowin_PLL"
+   },
+   {
+    "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v",
+    "InstLine" : 77,
+    "InstName" : "uart_comm",
+    "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v",
+    "ModuleLine" : 47,
+    "ModuleName" : "uart_comm",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v",
+      "InstLine" : 94,
+      "InstName" : "uart_rx_blk",
+      "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_rx.v",
+      "ModuleLine" : 16,
+      "ModuleName" : "uart_rx"
+     },
+     {
+      "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v",
+      "InstLine" : 101,
+      "InstName" : "uart_tx_blk",
+      "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_tx_fifo.v",
+      "ModuleLine" : 7,
+      "ModuleName" : "uart_tx_fifo",
+      "SubInsts" : [
+       {
+        "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_tx_fifo.v",
+        "InstLine" : 26,
+        "InstName" : "uart",
+        "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_tx.v",
+        "ModuleLine" : 12,
+        "ModuleName" : "uart_tx"
+       }
+      ]
+     },
+     {
+      "InstFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v",
+      "InstLine" : 115,
+      "InstName" : "crc_blk",
+      "ModuleFile" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/crc32.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "CRC32"
+     }
+    ]
    }
   ]
  }

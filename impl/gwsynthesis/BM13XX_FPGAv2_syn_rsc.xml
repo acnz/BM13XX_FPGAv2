@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="BM13XX_top"/>
+<Module name="BM13XX_top" Register="6" Alu="4" Lut="3" T_Register="886(6)" T_Alu="32(4)" T_Lut="870(3)">
+ <SubModule name="uart_comm" Register="517" Alu="15" Lut="591" T_Register="880(517)" T_Alu="28(15)" T_Lut="867(591)">
+  <SubModule name="uart_rx_blk" Register="32" Lut="20" T_Register="32(32)" T_Lut="20(20)"/>
+  <SubModule name="uart_tx_blk" Register="280" Alu="13" Lut="174" T_Register="299(280)" T_Alu="13(13)" T_Lut="200(174)">
+   <SubModule name="uart" Register="19" Lut="26" T_Register="19(19)" T_Lut="26(26)"/>
+  </SubModule>
+  <SubModule name="crc_blk" Register="32" Lut="56" T_Register="32(32)" T_Lut="56(56)"/>
+ </SubModule>
+</Module>

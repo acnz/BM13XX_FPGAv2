@@ -6,14 +6,15 @@
     <FileList>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\fpgaminer_top.v" type="verilog"/>
-        <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha256_transform.v" type="verilog"/>
+        <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\gowin_pll\gowin_pll.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha-256-functions.v" type="verilog"/>
+        <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha256_transform.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_comm.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_rx.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx_fifo.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\virtual_wire.v" type="verilog"/>
-        <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\gowin_pll\gowin_pll.v" type="verilog"/>
+        <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\crc32.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

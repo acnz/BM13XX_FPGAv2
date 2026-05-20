@@ -2,22 +2,32 @@ GowinSynthesis start
 Running parser ...
 Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v'
 Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\fpgaminer_top.v'
-Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha256_transform.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\gowin_pll\gowin_pll.v'
 Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha-256-functions.v'
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha256_transform.v'
 Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_comm.v'
 Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_rx.v'
 Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx.v'
 Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx_fifo.v'
 Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\virtual_wire.v'
-Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\gowin_pll\gowin_pll.v'
-WARN  (EX3786) : Assignment to input 'clk_50m'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":11)
+Analyzing Verilog file 'C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\crc32.v'
 Compiling module 'BM13XX_top'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":3)
 Compiling module 'Gowin_PLL'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\gowin_pll\gowin_pll.v":10)
-Port is declared here("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":5)
-WARN  (EX1998) : Net 'hash_clk' does not have a driver("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":8)
+Compiling module 'uart_comm'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_comm.v":47)
+WARN  (EX3780) : Using initial value of 'system_info' since it is never assigned("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_comm.v":124)
+Compiling module 'uart_rx'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_rx.v":16)
+Compiling module 'uart_tx_fifo'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx_fifo.v":7)
+Extracting RAM for identifier 'mem'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx_fifo.v":16)
+Compiling module 'uart_tx'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx.v":12)
+Compiling module 'CRC32'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\crc32.v":4)
+WARN  (EX1998) : Net 'rx_need_work' does not have a driver("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":73)
+WARN  (EX1998) : Net 'rx_new_nonce' does not have a driver("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":74)
+WARN  (EX1998) : Net 'rx_golden_nonce[31]' does not have a driver("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":75)
 NOTE  (EX0101) : Current top module is "BM13XX_top"
+WARN  (EX0211) : The output port "tx_busy" of module "uart_tx_fifo" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx_fifo.v":11)
+WARN  (EX0211) : The output port "led_done" of module "BM13XX_top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":8)
 [5%] Running netlist conversion ...
-WARN  (CV0016) : Input clk_50m is unused("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":5)
+WARN  (CV0016) : Input rst_n is unused("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":6)
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed
 [15%] Optimizing Phase 1 completed
@@ -33,7 +43,7 @@ Running technical mapping ...
 [75%] Tech-Mapping Phase 2 completed
 [80%] Tech-Mapping Phase 3 completed
 [90%] Tech-Mapping Phase 4 completed
-WARN  (NL0002) : The module "Gowin_PLL" instantiated to "gowin_plla" is swept in optimizing("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":13)
+WARN  (NL0002) : The module "Gowin_PLL" instantiated to "gowin_plla" is swept in optimizing("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\BM13XX_top.v":16)
 [95%] Generate netlist file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\gwsynthesis\BM13XX_FPGAv2.vg" completed
 [100%] Generate report file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\gwsynthesis\BM13XX_FPGAv2_syn.rpt.html" completed
 GowinSynthesis finish

@@ -1,15 +1,18 @@
 `timescale 1ns/1ps
 
-module BM13XX_top (clk_50m);
-
-	input clk_50m;
+module BM13XX_top (
+	input clk_50m,
+    input urx,
+    input rst_n,
+    output utx,
+    output led_done);
 
 	//// PLL
 	wire hash_clk;
 	`ifndef SIM
 		Gowin_PLL gowin_plla(
-            .clkout0(clk_50m), //output clkout0
-            .clkin(hash_clk) //input clkin
+            .clkout0(hash_clk), //output clkout0
+            .clkin(clk_50m) //input clkin
         );
 	`else
 		assign hash_clk = clk_50m;
@@ -58,8 +61,35 @@ module BM13XX_top (clk_50m);
 	localparam [31:0] GOLDEN_NONCE_OFFSET = (32'd1 << (7 - LOOP_LOG2)) + 32'd1;
 
     //// 
-	reg [255:0] state = 0;
-	reg [511:0] data = 0;
-	reg [31:0] nonce = 32'h00000000;
+	wire [255:0] state;
+	wire [511:0] data;
+	wire [31:0] nonce;
+
+    wire tx_new_work;
+    wire [255:0] tx_midstate;
+    wire [95:0] tx_data;
+    wire [31:0] tx_noncemin;
+    wire [31:0] tx_noncemax;
+    wire rx_need_work;
+    wire rx_new_nonce;
+    wire [31:0] rx_golden_nonce;
+
+    uart_comm uart_comm (
+        // Hashing Clock Domain
+        .hash_clk(hash_clk),
+        .rx_need_work(rx_need_work),
+        .rx_new_nonce(rx_new_nonce),
+        .rx_golden_nonce(rx_golden_nonce),
+        .tx_new_work(tx_new_work),
+        .tx_midstate(tx_midstate),
+        .tx_data(tx_data),
+        .tx_noncemin(tx_noncemin),
+        .tx_noncemax(tx_noncemax),
+        // UART Clock Domain
+        .comm_clk(baud_clk),
+        .rx_serial(urx),
+        .tx_serial(utx)
+    );
+
 
 endmodule

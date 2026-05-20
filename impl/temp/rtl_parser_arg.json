@@ -40,6 +40,10 @@
   {
    "Path" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/virtual_wire.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/crc32.v",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [
