@@ -30,6 +30,22 @@ module BM13XX_top (
         end
     end
 
+//    reg [20:0] led_counter = 21'd0;
+//    reg led_state = 1'b0;
+//    assign led_done = led_state; 
+//    always @ (posedge baud_clk)
+//    begin
+//		if (led_counter == 21'd1851852/5)
+//		begin
+//            led_state <= ~led_state;
+//            led_counter <= 21'd0;
+//        end
+//        else
+//        begin
+//            led_counter <= led_counter + 21'd1;
+//        end
+//    end
+
     
 	// The LOOP_LOG2 parameter determines how unrolled the SHA-256
 	// calculations are. For example, a setting of 0 will completely
@@ -42,11 +58,7 @@ module BM13XX_top (
 	//
 	// Valid range: [0, 5]
 
-`ifdef CONFIG_LOOP_LOG2
-	parameter LOOP_LOG2 = `CONFIG_LOOP_LOG2;
-`else
-	parameter LOOP_LOG2 = 0;
-`endif
+	parameter LOOP_LOG2 = 4;
 
     // No need to adjust these parameters
 	localparam [5:0] LOOP = (6'd1 << LOOP_LOG2);
@@ -129,8 +141,12 @@ module BM13XX_top (
 		tx_new_work ? tx_noncemin + core_id :
 		feedback_next ? nonce : (nonce + 32'd1 * ncores );
 
+    reg led_state = 1'b0;
+    assign led_done = led_state; 
+
 	always @ (posedge hash_clk)
 	begin
+        
 		midstate_buf <= tx_midstate;
 		data_buf <= tx_data;
 
@@ -159,6 +175,7 @@ module BM13XX_top (
 		if(is_golden_ticket)
 		begin
 			// TODO: Find a more compact calculation for this
+            led_state = 1'b1;
 			if (LOOP == 1)
 				rx_golden_nonce <= nonce - 32'd131;
 			else if (LOOP == 2)

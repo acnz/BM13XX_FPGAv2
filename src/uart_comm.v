@@ -233,13 +233,28 @@ module uart_comm (
 	reg [JOB_SIZE-1:0] meta_job;
 	reg [2:0] meta_new_work_flag;
 
+    reg [3:0] startup_counter = 4'd0;
+
 	always @ (posedge hash_clk)
 	begin
-		meta_job <= current_job;
-		meta_new_work_flag <= {new_work_flag, meta_new_work_flag[2:1]};
+        if (startup_counter == 5) begin
+            startup_counter <= startup_counter + 4'd1;
+            tx_midstate <= 256'h4651a6f59e4a9ab1420ac9d93f0fd55f3d80d2195dbee646eae4fa7cd3aedb42;
+            tx_data <= 96'h4b1e5e4a29ab5f49ffff001d;
+            tx_noncemin <= 32'h1dac2b7c - 32'd500;
+            tx_noncemax <= 32'h1dac2b7c + 32'd500;
+            tx_new_work <= 1'b1;
+        end else if (startup_counter <= 10) begin
+            startup_counter <= startup_counter + 4'd1;
+            tx_new_work <= 1'b0;
+        end else begin
+//            meta_job <= current_job;
+//            meta_new_work_flag <= {new_work_flag, meta_new_work_flag[2:1]};
 
-		tx_new_work <= meta_new_work_flag[2] ^ meta_new_work_flag[1];
-		{tx_midstate, tx_data, tx_noncemin, tx_noncemax} <= meta_job;
+//            tx_new_work <= meta_new_work_flag[2] ^ meta_new_work_flag[1];
+//            {tx_midstate, tx_data, tx_noncemin, tx_noncemax} <= meta_job;
+            startup_counter <= 4'd10;
+        end
 	end
 
 endmodule

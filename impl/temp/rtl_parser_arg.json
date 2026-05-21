@@ -6,7 +6,7 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/fpgaminer_top.v",
+   "Path" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/crc32.v",
    "Type" : "verilog"
   },
   {
@@ -35,14 +35,6 @@
   },
   {
    "Path" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_tx_fifo.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/virtual_wire.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/crc32.v",
    "Type" : "verilog"
   }
  ],
