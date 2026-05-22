@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="BM13XX_top" Register="81" Alu="4" Lut="126" T_Register="7399(81)" T_Alu="2875(4)" T_Lut="8052(126)">
+<Module name="BM13XX_top" Register="783" Alu="35" Lut="102" T_Register="9307(783)" T_Alu="2910(35)" T_Lut="7956(102)">
  <SubModule name="gowin_plla"/>
- <SubModule name="uart_comm" Register="523" Alu="15" Lut="601" T_Register="886(523)" T_Alu="28(15)" T_Lut="877(601)">
-  <SubModule name="uart_rx_blk" Register="32" Lut="22" T_Register="32(32)" T_Lut="22(22)"/>
+ <SubModule name="uart_comm" Register="1769" Alu="15" Lut="590" T_Register="2100(1769)" T_Alu="28(15)" T_Lut="810(590)">
+  <SubModule name="uart_rx_blk" Register="32" Lut="20" T_Register="32(32)" T_Lut="20(20)"/>
   <SubModule name="uart_tx_blk" Register="280" Alu="13" Lut="174" T_Register="299(280)" T_Alu="13(13)" T_Lut="200(174)">
    <SubModule name="uart" Register="19" Lut="26" T_Register="19(19)" T_Lut="26(26)"/>
   </SubModule>
-  <SubModule name="crc_blk" Register="32" Lut="54" T_Register="32(32)" T_Lut="54(54)"/>
  </SubModule>
- <SubModule name="uut" Register="256" Alu="252" Lut="2730" T_Register="3328(256)" T_Alu="1532(252)" T_Lut="3618(2730)">
-  <SubModule name="HASHERS[0].U" Register="768" Alu="320" Lut="116" T_Register="768(768)" T_Alu="320(320)" T_Lut="312(116)">
+ <SubModule name="uut" Register="256" Alu="256" Lut="2849" T_Register="3328(256)" T_Alu="1536(256)" T_Lut="3617(2849)">
+  <SubModule name="HASHERS[0].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
    <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
    <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
    <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
-   <SubModule name="maj_blk" Lut="36" T_Lut="36(36)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
    <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
    <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
   </SubModule>
@@ -42,7 +41,7 @@
    <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
   </SubModule>
  </SubModule>
- <SubModule name="uut2" Register="32" Alu="31" Lut="2663" T_Register="3104(32)" T_Alu="1311(31)" T_Lut="3431(2663)">
+ <SubModule name="uut2" Register="24" Alu="31" Lut="2659" T_Register="3096(24)" T_Alu="1311(31)" T_Lut="3427(2659)">
   <SubModule name="HASHERS[0].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
    <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
    <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>

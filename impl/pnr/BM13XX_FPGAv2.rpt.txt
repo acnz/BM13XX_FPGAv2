@@ -12,27 +12,27 @@
   <Part Number>: GW5A-LV25MG121NC1/I0
   <Device>: GW5A-25
   <Device Version>: A
-  <Created Time>:Wed May 20 23:22:29 2026
+  <Created Time>:Thu May 21 22:15:09 2026
 
 
 2. PnR Details
 
   Running placement:
     Placement Phase 0: CPU time = 0h 0m 4s, Elapsed time = 0h 0m 4s
-    Placement Phase 1: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
-    Placement Phase 2: CPU time = 0h 0m 23s, Elapsed time = 0h 0m 23s
-    Placement Phase 3: CPU time = 0h 0m 3s, Elapsed time = 0h 0m 3s
-    Total Placement: CPU time = 0h 0m 31s, Elapsed time = 0h 0m 31s
+    Placement Phase 1: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
+    Placement Phase 2: CPU time = 0h 0m 20s, Elapsed time = 0h 0m 20s
+    Placement Phase 3: CPU time = 0h 0m 4s, Elapsed time = 0h 0m 4s
+    Total Placement: CPU time = 0h 0m 29s, Elapsed time = 0h 0m 29s
  Running routing:
-    Routing Phase 0: CPU time = 0h 0m 0.008s, Elapsed time = 0h 0m 0.008s
-    Routing Phase 1: CPU time = 0h 5m 45s, Elapsed time = 0h 5m 45s
-    Routing Phase 2: CPU time = 0h 0m 0.202s, Elapsed time = 0h 0m 0.202s
+    Routing Phase 0: CPU time = 0h 0m 0.01s, Elapsed time = 0h 0m 0.01s
+    Routing Phase 1: CPU time = 0h 0m 50s, Elapsed time = 0h 0m 50s
+    Routing Phase 2: CPU time = 0h 0m 0.199s, Elapsed time = 0h 0m 0.198s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 5m 45s, Elapsed time = 0h 5m 45s
+    Total Routing: CPU time = 0h 0m 50s, Elapsed time = 0h 0m 50s
  Generate output files:
-    CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
+    CPU time = 0h 0m 3s, Elapsed time = 0h 0m 3s
 
- Total Time and Memory Usage: CPU time = 0h 6m 19s, Elapsed time = 0h 6m 19s, Peak memory usage = 2208MB
+ Total Time and Memory Usage: CPU time = 0h 1m 21s, Elapsed time = 0h 1m 21s, Peak memory usage = 624MB
 
 
 3. Resource Usage Summary
@@ -40,15 +40,15 @@
   --------------------------------------------------------------------------------
   Resources                   | Usage                               | Utilization
   --------------------------------------------------------------------------------
-  Logic                       | 10816/23040                         |  47%
-    --LUT,ALU,ROM16           | 10816(7935 LUT, 2881 ALU, 0 ROM16)  | -
+  Logic                       | 10880/23040                         |  48%
+    --LUT,ALU,ROM16           | 10880(7955 LUT, 2925 ALU, 0 ROM16)  | -
     --SSRAM(RAM16)            | 0                                   | -
-  Register                    | 7399/23280                          |  32%
+  Register                    | 9307/23280                          |  40%
     --Logic Register as Latch | 0/23040                             |  0%
-    --Logic Register as FF    | 7397/23040                          |  33%
+    --Logic Register as FF    | 9305/23040                          |  41%
     --I/O Register as Latch   | 0/240                               |  0%
     --I/O Register as FF      | 2/240                               |  <1%
-  CLS                         | 7590/11520                          |  66%
+  CLS                         | 8558/11520                          |  75%
   I/O Port                    | 5/86                                |  6%
   I/O Buf                     | 4                                   | -
     --Input Buf               | 2                                   | -
@@ -81,7 +81,7 @@
   Clock Resource| Usage         | Utilization 
   ------------------------------------------
   PRIMARY       | 3/8           | 38%
-  LW            | 1/8           | 13%
+  LW            | 3/8           | 38%
   GCLK_PIN      | 3/30          | 10%
   PLLA          | 1/6           | 17%
   ==========================================
@@ -92,10 +92,12 @@
   -------------------------------------------
   Signal         | Global Clock   | Location
   -------------------------------------------
-  clk_50m_d      | PRIMARY        |  BR BL
-  baud_clk       | PRIMARY        |  TL BL
+  clk_50m_d      | PRIMARY        |  BL
+  baud_clk       | PRIMARY        |  TR TL BR
   hash_clk       | PRIMARY        |  TR TL BR BL
   feedback       | LW             |  -
+  uart_comm/msg_data_479_11| LW             |  -
+  uart_comm/n17047_14| LW             |  -
   ===========================================
 
 

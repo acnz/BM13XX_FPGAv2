@@ -161,6 +161,7 @@ module BM13XX_top (
             // PRIORIDADE 1: O Chefe (UART) mandou trabalho novo!
             nonce <= nonce_next;  // A sua matemática já garante que aqui é tx_noncemin + core_id
             rx_need_work <= 1'b0; // Abaixa a bandeira de pedir trabalho
+            led_state <= 1'b0;
         end else if(nonce >= tx_noncemax) begin
             nonce <= nonce;
             rx_need_work <= 1'b1;
@@ -171,11 +172,11 @@ module BM13XX_top (
         end
 
 		// Check to see if the last hash generated is valid.
-		is_golden_ticket <= (hash2[255:224] == 32'h00000000) && !feedback_d1;
+		is_golden_ticket <= (hash2[255:232] == 24'h000000) && !feedback_d1;
 		if(is_golden_ticket)
 		begin
 			// TODO: Find a more compact calculation for this
-            led_state = 1'b1;
+            led_state <= 1'b1;
 			if (LOOP == 1)
 				rx_golden_nonce <= nonce - 32'd131;
 			else if (LOOP == 2)

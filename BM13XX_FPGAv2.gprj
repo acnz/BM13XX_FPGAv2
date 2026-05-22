@@ -7,7 +7,6 @@
     <FileList>
         <File path="src/BM13XX_top.v" type="file.verilog" enable="1"/>
         <File path="src/crc32.v" type="file.verilog" enable="1"/>
-        <File path="src/fpgaminer_top.v" type="file.verilog" enable="0"/>
         <File path="src/gowin_pll/gowin_pll.v" type="file.verilog" enable="1"/>
         <File path="src/sha-256-functions.v" type="file.verilog" enable="1"/>
         <File path="src/sha256_transform.v" type="file.verilog" enable="1"/>

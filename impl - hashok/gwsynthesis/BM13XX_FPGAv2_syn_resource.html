@@ -1,0 +1,686 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Hierarchy Module Resource</title>
+<style type="text/css">
+body { font-family: Verdana, Arial, sans-serif; font-size: 14px; }
+div#main_wrapper{ width: 100%; }
+h1 {text-align: center; }
+h1 {margin-top: 36px; }
+table, th, td { border: 1px solid #aaa; }
+table { border-collapse:collapse; margin-top: 10px; margin-bottom: 20px; width: 100%; }
+th, td { align = "center"; padding: 5px 2px 5px 5px; }
+th { color: #fff; font-weight: bold; background-color: #0084ff; }
+table td.label { width: 20%; white-space: nowrap; min-width: 20px; background-color: #dee8f4; }
+</style>
+</head>
+<body>
+<div id="main_wrapper">
+<div id="content">
+<h1>Hierarchy Module Resource</h1>
+<table>
+<tr>
+<th class="label">MODULE NAME</th>
+<th class="label">REG NUMBER</th>
+<th class="label">ALU NUMBER</th>
+<th class="label">LUT NUMBER</th>
+<th class="label">DSP NUMBER</th>
+<th class="label">BSRAM NUMBER</th>
+<th class="label">SSRAM NUMBER</th>
+<th class="label">ROM16 NUMBER</th>
+</tr>
+<tr>
+<td class="label">BM13XX_top (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v)</td>
+<td align = "center">81</td>
+<td align = "center">4</td>
+<td align = "center">123</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--gowin_plla
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--uart_comm
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v)</td>
+<td align = "center">523</td>
+<td align = "center">15</td>
+<td align = "center">599</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--uart_rx_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v)</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">22</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--uart_tx_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v)</td>
+<td align = "center">280</td>
+<td align = "center">13</td>
+<td align = "center">174</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--uart
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_tx_fifo.v)</td>
+<td align = "center">19</td>
+<td align = "center">-</td>
+<td align = "center">26</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--crc_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/uart_comm.v)</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">57</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--uut
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v)</td>
+<td align = "center">256</td>
+<td align = "center">248</td>
+<td align = "center">2708</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--HASHERS[0].U
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">768</td>
+<td align = "center">320</td>
+<td align = "center">140</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ch_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--maj_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--HASHERS[1].U
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">768</td>
+<td align = "center">320</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ch_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--maj_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--HASHERS[2].U
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">768</td>
+<td align = "center">320</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ch_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--maj_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--HASHERS[3].U
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">768</td>
+<td align = "center">320</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ch_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--maj_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp|--uut2
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/BM13XX_top.v)</td>
+<td align = "center">24</td>
+<td align = "center">31</td>
+<td align = "center">2660</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--HASHERS[0].U
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">768</td>
+<td align = "center">320</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ch_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--maj_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--HASHERS[1].U
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">768</td>
+<td align = "center">320</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ch_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--maj_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--HASHERS[2].U
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">768</td>
+<td align = "center">320</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ch_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--maj_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--HASHERS[3].U
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">768</td>
+<td align = "center">320</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--e1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ch_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--maj_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s0_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--s1_blk
+ (C:/Users/andre/Documents/FPGA/BM13XX_FPGAv2/src/sha256_transform.v)</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">32</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+<td align = "center">-</td>
+</tr>
+</table>
+</div><!-- content -->
+</div><!-- main_wrapper -->
+</body>
+</html>

@@ -130,15 +130,34 @@ module uart_comm (
 	reg [7:0] msg_length, length, msg_type;
 	reg [3:0] state = STATE_IDLE;
 
+    reg [2:0] nonce_sync = 0;
+	reg send_nonce_req = 0;
+	reg [31:0] nonce_to_send = 0;
+
 
 	always @ (posedge comm_clk)
 	begin
 		uart_tx_we <= 1'b0;
 
+        // Ponte: A UART percebe que a FPGA achou um Nonce
+		nonce_sync <= {nonce_toggle_hash, nonce_sync[2:1]};
+		if (nonce_sync[1] ^ nonce_sync[0]) begin
+			send_nonce_req <= 1'b1;
+			nonce_to_send <= golden_nonce_buf;
+		end
+
 		case (state)
 			//// Waiting for new packet
-			STATE_IDLE: if (uart_rx_flag) begin
-				if (uart_rx_byte == 0)	// PING
+			STATE_IDLE: begin
+                if (send_nonce_req) begin // OPA! Temos um Nonce para enviar!
+					send_nonce_req <= 1'b0;
+					msg_data <= { {(MSG_BUF_LEN*8 - 32){1'b0}}, nonce_to_send };
+					length <= 8'd1;
+					msg_length <= 8'd4; // Vamos enviar exatamente 4 bytes pro ESP32
+					state <= 4'b0101;   // Vai para o nosso NOVO estado abaixo!
+				end 
+                else if (uart_rx_flag) begin
+				    if (uart_rx_byte == 0)	// PING
 				begin
 					uart_tx_we <= 1'b1;
 					uart_tx_data <= 8'd1;	// PONG
@@ -178,9 +197,9 @@ module uart_comm (
 				msg_length <= 8'd8;
 				state <= STATE_SEND;
 
-				if (crc != 32'd0)
-					msg_type <= MSG_RESEND;
-				else if (msg_type == MSG_INFO && msg_length == 8)
+				//if (crc != 32'd0)
+				//	msg_type <= MSG_RESEND;
+				if (msg_type == MSG_INFO && msg_length == 8)
 				begin
 					msg_type <= MSG_INFO;
 					msg_data <= system_info;
@@ -225,6 +244,16 @@ module uart_comm (
 				if (length == msg_length)
 					state <= STATE_IDLE;
 			end
+            //// Send RAW packet (O GRITO DO GOLDEN NONCE!)
+			4'b0101: begin
+				uart_tx_we <= 1'b1;
+				length <= length + 8'd1;
+				uart_tx_data <= msg_data[7:0]; // Envia o LSB primeiro
+				msg_data <= {8'd0, msg_data[MSG_BUF_LEN*8-1:8]}; // Desloca pra direita
+
+				if (length == msg_length)
+					state <= STATE_IDLE; // Volta a dormir após enviar os 4 bytes
+			end
 		endcase
 	end
 
@@ -234,27 +263,38 @@ module uart_comm (
 	reg [2:0] meta_new_work_flag;
 
     reg [3:0] startup_counter = 4'd0;
+    // Novos registradores para capturar o Nonce!
+	reg nonce_toggle_hash = 0;
+	reg [31:0] golden_nonce_buf = 0;
 
 	always @ (posedge hash_clk)
 	begin
-        if (startup_counter == 5) begin
-            startup_counter <= startup_counter + 4'd1;
-            tx_midstate <= 256'h4651a6f59e4a9ab1420ac9d93f0fd55f3d80d2195dbee646eae4fa7cd3aedb42;
-            tx_data <= 96'h4b1e5e4a29ab5f49ffff001d;
-            tx_noncemin <= 32'h1dac2b7c - 32'd500;
-            tx_noncemax <= 32'h1dac2b7c + 32'd500;
-            tx_new_work <= 1'b1;
-        end else if (startup_counter <= 10) begin
-            startup_counter <= startup_counter + 4'd1;
-            tx_new_work <= 1'b0;
-        end else begin
-//            meta_job <= current_job;
-//            meta_new_work_flag <= {new_work_flag, meta_new_work_flag[2:1]};
+//        if (startup_counter == 5) begin
+//            startup_counter <= startup_counter + 4'd1;
+//            //tx_midstate <= 256'h4651a6f59e4a9ab1420ac9d93f0fd55f3d80d2195dbee646eae4fa7cd3aedb42;
+//            //tx_data <= 96'h4b1e5e4a29ab5f49ffff001d;
+//            //tx_noncemin <= 32'h1dac2b7c - 32'd500;
+//           // tx_noncemax <= 32'h1dac2b7c + 32'd500;
+//            tx_midstate <= 256'h228ea4732a3c9ba860c009cda7252b9161a5e75ec8c582a5f106abb3af41f790;
+//            tx_data <= 96'h2194261a9395e64dbed17115;
+//            tx_noncemin <= 32'h0;
+//            tx_noncemax <= 32'h0e33337a + 32'd500;
+//            tx_new_work <= 1'b1;
+//        end else if (startup_counter <= 10) begin
+//            startup_counter <= startup_counter + 4'd1;
+//            tx_new_work <= 1'b0;
+//        end else begin
+            if (rx_new_nonce) begin
+                golden_nonce_buf <= rx_golden_nonce;
+                nonce_toggle_hash <= ~nonce_toggle_hash;
+            end
+            meta_job <= current_job;
+            meta_new_work_flag <= {new_work_flag, meta_new_work_flag[2:1]};
 
-//            tx_new_work <= meta_new_work_flag[2] ^ meta_new_work_flag[1];
-//            {tx_midstate, tx_data, tx_noncemin, tx_noncemax} <= meta_job;
-            startup_counter <= 4'd10;
-        end
+            tx_new_work <= meta_new_work_flag[2] ^ meta_new_work_flag[1];
+            {tx_midstate, tx_data, tx_noncemin, tx_noncemax} <= meta_job;
+       //     startup_counter <= 4'd12;
+       // end
 	end
 
 endmodule

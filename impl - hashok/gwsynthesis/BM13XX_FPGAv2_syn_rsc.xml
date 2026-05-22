@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="BM13XX_top" Register="81" Alu="4" Lut="123" T_Register="7391(81)" T_Alu="2871(4)" T_Lut="8045(123)">
+ <SubModule name="gowin_plla"/>
+ <SubModule name="uart_comm" Register="523" Alu="15" Lut="599" T_Register="886(523)" T_Alu="28(15)" T_Lut="878(599)">
+  <SubModule name="uart_rx_blk" Register="32" Lut="22" T_Register="32(32)" T_Lut="22(22)"/>
+  <SubModule name="uart_tx_blk" Register="280" Alu="13" Lut="174" T_Register="299(280)" T_Alu="13(13)" T_Lut="200(174)">
+   <SubModule name="uart" Register="19" Lut="26" T_Register="19(19)" T_Lut="26(26)"/>
+  </SubModule>
+  <SubModule name="crc_blk" Register="32" Lut="57" T_Register="32(32)" T_Lut="57(57)"/>
+ </SubModule>
+ <SubModule name="uut" Register="256" Alu="248" Lut="2708" T_Register="3328(256)" T_Alu="1528(248)" T_Lut="3616(2708)">
+  <SubModule name="HASHERS[0].U" Register="768" Alu="320" Lut="140" T_Register="768(768)" T_Alu="320(320)" T_Lut="332(140)">
+   <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
+  </SubModule>
+  <SubModule name="HASHERS[1].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
+   <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
+  </SubModule>
+  <SubModule name="HASHERS[2].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
+   <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
+  </SubModule>
+  <SubModule name="HASHERS[3].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
+   <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
+  </SubModule>
+ </SubModule>
+ <SubModule name="uut2" Register="24" Alu="31" Lut="2660" T_Register="3096(24)" T_Alu="1311(31)" T_Lut="3428(2660)">
+  <SubModule name="HASHERS[0].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
+   <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
+  </SubModule>
+  <SubModule name="HASHERS[1].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
+   <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
+  </SubModule>
+  <SubModule name="HASHERS[2].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
+   <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
+  </SubModule>
+  <SubModule name="HASHERS[3].U" Register="768" Alu="320" T_Register="768(768)" T_Alu="320(320)" T_Lut="192(0)">
+   <SubModule name="e0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="e1_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="ch_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="maj_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s0_blk" Lut="32" T_Lut="32(32)"/>
+   <SubModule name="s1_blk" Lut="32" T_Lut="32(32)"/>
+  </SubModule>
+ </SubModule>
+</Module>
