@@ -134,128 +134,143 @@ module uart_comm (
 	reg send_nonce_req = 0;
 	reg [31:0] nonce_to_send = 0;
 
-
+    reg [4:0] baud_counter = 5'd0;
+    reg baud_clk = 1'b0;
 	always @ (posedge comm_clk)
 	begin
-		uart_tx_we <= 1'b0;
+            
 
-        // Ponte: A UART percebe que a FPGA achou um Nonce
-		nonce_sync <= {nonce_toggle_hash, nonce_sync[2:1]};
-		if (nonce_sync[1] ^ nonce_sync[0]) begin
-			send_nonce_req <= 1'b1;
-			nonce_to_send <= golden_nonce_buf;
-		end
+		if (baud_counter == 5'd26)
+		begin
+            baud_clk <= 1'b1;
+            baud_counter <= 5'd0;
 
-		case (state)
-			//// Waiting for new packet
-			STATE_IDLE: begin
-                if (send_nonce_req) begin // OPA! Temos um Nonce para enviar!
-					send_nonce_req <= 1'b0;
-					msg_data <= { {(MSG_BUF_LEN*8 - 32){1'b0}}, nonce_to_send };
-					length <= 8'd1;
-					msg_length <= 8'd4; // Vamos enviar exatamente 4 bytes pro ESP32
-					state <= 4'b0101;   // Vai para o nosso NOVO estado abaixo!
-				end 
-                else if (uart_rx_flag) begin
-				    if (uart_rx_byte == 0)	// PING
-				begin
-					uart_tx_we <= 1'b1;
-					uart_tx_data <= 8'd1;	// PONG
-				end
-				else if (uart_rx_byte < 8)	// Invalid Length
-				begin
-					length <= 8'd1;
-					msg_length <= 8'h8;
-					msg_type <= MSG_INVALID;
-					state <= STATE_SEND;
-				end
-				else
-				begin
-					length <= 8'd2;
-					msg_length <= uart_rx_byte;
-					state <= STATE_READ;
-				end
-                end
+    
+            uart_tx_we <= 1'b0;
+
+            // Ponte: A UART percebe que a FPGA achou um Nonce
+            nonce_sync <= {nonce_toggle_hash, nonce_sync[2:1]};
+            if (nonce_sync[1] ^ nonce_sync[0]) begin
+                send_nonce_req <= 1'b1;
+                nonce_to_send <= golden_nonce_buf;
             end
 
-			//// Reading packet
-			STATE_READ: if (uart_rx_flag) begin
-				msg_data <= {uart_rx_byte, msg_data[MSG_BUF_LEN*8-1:8]};
-				length <= length + 8'd1;
+            case (state)
+                //// Waiting for new packet
+                STATE_IDLE: begin
+                    if (send_nonce_req) begin // OPA! Temos um Nonce para enviar!
+                        send_nonce_req <= 1'b0;
+                        msg_data <= { {(MSG_BUF_LEN*8 - 32){1'b0}}, nonce_to_send };
+                        length <= 8'd1;
+                        msg_length <= 8'd4; // Vamos enviar exatamente 4 bytes pro ESP32
+                        state <= 4'b0101;   // Vai para o nosso NOVO estado abaixo!
+                    end 
+                    else if (uart_rx_flag) begin
+                        if (uart_rx_byte == 0)	// PING
+                    begin
+                        uart_tx_we <= 1'b1;
+                        uart_tx_data <= 8'd1;	// PONG
+                    end
+                    else if (uart_rx_byte < 8)	// Invalid Length
+                    begin
+                        length <= 8'd1;
+                        msg_length <= 8'h8;
+                        msg_type <= MSG_INVALID;
+                        state <= STATE_SEND;
+                    end
+                    else
+                    begin
+                        length <= 8'd2;
+                        msg_length <= uart_rx_byte;
+                        state <= STATE_READ;
+                    end
+                    end
+                end
 
-				if (length == 8'd4)
-					msg_type <= uart_rx_byte;
+                //// Reading packet
+                STATE_READ: if (uart_rx_flag) begin
+                    msg_data <= {uart_rx_byte, msg_data[MSG_BUF_LEN*8-1:8]};
+                    length <= length + 8'd1;
 
-				if (length == msg_length)
-					state <= STATE_PARSE;
-			end
+                    if (length == 8'd4)
+                        msg_type <= uart_rx_byte;
 
-			//// Parse packet
-			STATE_PARSE: begin
-				// By default, we'll send some kind of
-				// response. Special cases are handled below.
-				length <= 8'd1;
-				msg_length <= 8'd8;
-				state <= STATE_SEND;
+                    if (length == msg_length)
+                        state <= STATE_PARSE;
+                end
 
-				//if (crc != 32'd0)
-				//	msg_type <= MSG_RESEND;
-				if (msg_type == MSG_INFO && msg_length == 8)
-				begin
-					msg_type <= MSG_INFO;
-					msg_data <= system_info;
-					msg_length <= 8'd16;
-				end
-				else if (msg_type == MSG_PUSH_JOB && msg_length == (JOB_SIZE/8 + 8))
-				begin
-					queued_job_en <= 1'b0;
-					current_job <= msg_data[MSG_BUF_LEN*8-32-1:MSG_BUF_LEN*8-32-JOB_SIZE];
-					new_work_flag <= ~new_work_flag;
+                //// Parse packet
+                STATE_PARSE: begin
+                    // By default, we'll send some kind of
+                    // response. Special cases are handled below.
+                    length <= 8'd1;
+                    msg_length <= 8'd8;
+                    state <= STATE_SEND;
 
-					msg_type <= MSG_ACK;
-				end
-				else if (msg_type == MSG_QUEUE_JOB && msg_length == (JOB_SIZE/8 + 8))
-				begin
-					queued_job_en <= 1'b1;
-					queued_job <= msg_data[MSG_BUF_LEN*8-32-1:MSG_BUF_LEN*8-32-JOB_SIZE];
+                    //if (crc != 32'd0)
+                    //	msg_type <= MSG_RESEND;
+                    if (msg_type == MSG_INFO && msg_length == 8)
+                    begin
+                        msg_type <= MSG_INFO;
+                        msg_data <= system_info;
+                        msg_length <= 8'd16;
+                    end
+                    else if (msg_type == MSG_PUSH_JOB && msg_length == (JOB_SIZE/8 + 8))
+                    begin
+                        queued_job_en <= 1'b0;
+                        current_job <= msg_data[MSG_BUF_LEN*8-32-1:MSG_BUF_LEN*8-32-JOB_SIZE];
+                        new_work_flag <= ~new_work_flag;
 
-					msg_type <= MSG_ACK;
-				end
-				else
-					msg_type <= MSG_INVALID;
-			end
+                        msg_type <= MSG_ACK;
+                    end
+                    else if (msg_type == MSG_QUEUE_JOB && msg_length == (JOB_SIZE/8 + 8))
+                    begin
+                        queued_job_en <= 1'b1;
+                        queued_job <= msg_data[MSG_BUF_LEN*8-32-1:MSG_BUF_LEN*8-32-JOB_SIZE];
 
-			//// Send packet
-			STATE_SEND: begin
-				uart_tx_we <= 1'b1;
-				length <= length + 8'd1;
+                        msg_type <= MSG_ACK;
+                    end
+                    else
+                        msg_type <= MSG_INVALID;
+                end
 
-				if (length == 8'd1)
-					uart_tx_data <= msg_length;
-				else if (length == 8'd2 || length == 8'd3)
-					uart_tx_data <= 8'h00;
-				else if (length == 8'd4)
-					uart_tx_data <= msg_type;
-				else if (length <= msg_length)
-				begin
-					uart_tx_data <= msg_data[7:0];
-					msg_data <= {8'd0, msg_data[MSG_BUF_LEN*8-1:8]};
-				end
+                //// Send packet
+                STATE_SEND: begin
+                    uart_tx_we <= 1'b1;
+                    length <= length + 8'd1;
 
-				if (length == msg_length)
-					state <= STATE_IDLE;
-			end
-            //// Send RAW packet (O GRITO DO GOLDEN NONCE!)
-			4'b0101: begin
-				uart_tx_we <= 1'b1;
-				length <= length + 8'd1;
-				uart_tx_data <= msg_data[7:0]; // Envia o LSB primeiro
-				msg_data <= {8'd0, msg_data[MSG_BUF_LEN*8-1:8]}; // Desloca pra direita
+                    if (length == 8'd1)
+                        uart_tx_data <= msg_length;
+                    else if (length == 8'd2 || length == 8'd3)
+                        uart_tx_data <= 8'h00;
+                    else if (length == 8'd4)
+                        uart_tx_data <= msg_type;
+                    else if (length <= msg_length)
+                    begin
+                        uart_tx_data <= msg_data[7:0];
+                        msg_data <= {8'd0, msg_data[MSG_BUF_LEN*8-1:8]};
+                    end
 
-				if (length == msg_length)
-					state <= STATE_IDLE; // Volta a dormir após enviar os 4 bytes
-			end
-		endcase
+                    if (length == msg_length)
+                        state <= STATE_IDLE;
+                end
+                //// Send RAW packet (O GRITO DO GOLDEN NONCE!)
+                4'b0101: begin
+                    uart_tx_we <= 1'b1;
+                    length <= length + 8'd1;
+                    uart_tx_data <= msg_data[7:0]; // Envia o LSB primeiro
+                    msg_data <= {8'd0, msg_data[MSG_BUF_LEN*8-1:8]}; // Desloca pra direita
+
+                    if (length == msg_length)
+                        state <= STATE_IDLE; // Volta a dormir após enviar os 4 bytes
+                end
+            endcase
+        end
+        else
+        begin
+            baud_clk <= 1'b0;
+            baud_counter <= baud_counter + 5'd1;
+        end
 	end
 
 

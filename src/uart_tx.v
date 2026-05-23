@@ -22,31 +22,45 @@ module uart_tx (
 	reg [3:0] counter = 4'd0;
 	reg [3:0] sent = 4'd0;
 
-
+	//
+    reg [4:0] baud_counter = 5'd0;
+    reg baud_clk = 1'b0;
 	always @ (posedge clk)
 	begin
-		counter <= counter + 4'd1;
 
-		if (counter == 4'd15)
-			data <= {1'b1, data[9:1]};
-
-		if (rx_we & ~tx_busy)
+		if (baud_counter == 5'd26)
 		begin
-			sent <= 4'd0;
-			tx_busy <= 1'b1;
-			data <= {1'b1, rx_data, 1'b0};
-			counter <= 4'd0;
-		end
+            baud_clk <= 1'b1;
+            baud_counter <= 5'd0;
 
-		if (tx_busy & (counter == 4'd14))
-		begin
-			sent <= sent + 4'd1;
+            counter <= counter + 4'd1;
 
-			if (sent == 4'd9)
-				tx_busy <= 1'b0;
-		end
+            if (counter == 4'd15)
+                data <= {1'b1, data[9:1]};
 
-		tx_serial <= data[0];
+            if (rx_we & ~tx_busy)
+            begin
+                sent <= 4'd0;
+                tx_busy <= 1'b1;
+                data <= {1'b1, rx_data, 1'b0};
+                counter <= 4'd0;
+            end
+
+            if (tx_busy & (counter == 4'd14))
+            begin
+                sent <= sent + 4'd1;
+
+                if (sent == 4'd9)
+                    tx_busy <= 1'b0;
+            end
+
+            tx_serial <= data[0];
+        end
+        else
+        begin
+            baud_clk <= 1'b0;
+            baud_counter <= baud_counter + 5'd1;
+        end
 	end
 
 endmodule

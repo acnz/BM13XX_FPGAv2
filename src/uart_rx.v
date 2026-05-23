@@ -32,48 +32,61 @@ module uart_rx (
 	wire zero_detect = ~serial[5] & ~serial[4] & ~serial[3];
 
 	//
+    reg [4:0] baud_counter = 5'd0;
+    reg baud_clk = 1'b0;
 	always @ (posedge clk)
 	begin
-		// Meta-stability protection and history
-		serial <= {serial[4:0], rx_serial};
 
-		// What fraction of bit time are we at
-		counter <= counter + 4'd1;
-
-		if (tx_flag)
-			tx_flag <= 1'b0;
-
-		// Finite-State-Machine
-		if (state == 4'd0)
+		if (baud_counter == 5'd26)
 		begin
-			if (start_detect)
-			begin
-				state <= 4'd1;
-				counter <= 4'd0;
-			end
-		end
-		else if (counter == 4'd9)
-		begin
-			state <= state + 4'd1;
-			partial_byte <= {one_detect, partial_byte[8:1]};
+            baud_clk <= 1'b1;
+            baud_counter <= 5'd0;
+            // Meta-stability protection and history
+            serial <= {serial[4:0], rx_serial};
 
-			// Noise error! Reset!
-			if (~one_detect & ~zero_detect)
-				state <= 4'd0;
-			else if ((state == 4'd1) & ~zero_detect)	// Start bit error
-				state <= 4'd0;
-		end
-		else if (state == 4'd11)
-		begin
-			state <= 4'd0;
-			
-			// Stop bit correctly received?
-			if (partial_byte[8])
-			begin
-				tx_flag <= 1'b1;
-				tx_byte <= partial_byte[7:0];
-			end
-		end
+            // What fraction of bit time are we at
+            counter <= counter + 4'd1;
+
+            if (tx_flag)
+                tx_flag <= 1'b0;
+
+            // Finite-State-Machine
+            if (state == 4'd0)
+            begin
+                if (start_detect)
+                begin
+                    state <= 4'd1;
+                    counter <= 4'd0;
+                end
+            end
+            else if (counter == 4'd9)
+            begin
+                state <= state + 4'd1;
+                partial_byte <= {one_detect, partial_byte[8:1]};
+
+                // Noise error! Reset!
+                if (~one_detect & ~zero_detect)
+                    state <= 4'd0;
+                else if ((state == 4'd1) & ~zero_detect)	// Start bit error
+                    state <= 4'd0;
+            end
+            else if (state == 4'd11)
+            begin
+                state <= 4'd0;
+                
+                // Stop bit correctly received?
+                if (partial_byte[8])
+                begin
+                    tx_flag <= 1'b1;
+                    tx_byte <= partial_byte[7:0];
+                end
+            end
+        end
+        else
+        begin
+            baud_clk <= 1'b0;
+            baud_counter <= baud_counter + 5'd1;
+        end
 	end
 
 endmodule
