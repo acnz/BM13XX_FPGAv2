@@ -172,7 +172,7 @@ module BM13XX_top (
         end
 
 		// Check to see if the last hash generated is valid.
-		is_golden_ticket <= (hash2[255:232] == 24'h000000) && !feedback_d1;
+		is_golden_ticket <= (hash2[255:224] == 32'h00000000) && !feedback_d1;
 		if(is_golden_ticket)
 		begin
 			// TODO: Find a more compact calculation for this
