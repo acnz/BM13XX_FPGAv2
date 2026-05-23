@@ -175,7 +175,8 @@ module uart_comm (
 					msg_length <= uart_rx_byte;
 					state <= STATE_READ;
 				end
-			end
+                end
+            end
 
 			//// Reading packet
 			STATE_READ: if (uart_rx_flag) begin
@@ -271,14 +272,10 @@ module uart_comm (
 	begin
 //        if (startup_counter == 5) begin
 //            startup_counter <= startup_counter + 4'd1;
-//            //tx_midstate <= 256'h4651a6f59e4a9ab1420ac9d93f0fd55f3d80d2195dbee646eae4fa7cd3aedb42;
-//            //tx_data <= 96'h4b1e5e4a29ab5f49ffff001d;
-//            //tx_noncemin <= 32'h1dac2b7c - 32'd500;
-//           // tx_noncemax <= 32'h1dac2b7c + 32'd500;
-//            tx_midstate <= 256'h228ea4732a3c9ba860c009cda7252b9161a5e75ec8c582a5f106abb3af41f790;
-//            tx_data <= 96'h2194261a9395e64dbed17115;
-//            tx_noncemin <= 32'h0;
-//            tx_noncemax <= 32'h0e33337a + 32'd500;
+//            tx_midstate <= 256'h4719F91B96B187364F0103C8C3C8D8E91E59CAA890CCAC7D6358BFF0BC909A33;
+//            tx_data <= 96'hffff001d29ab5f494b1e5e4a;
+//            tx_noncemin <= 32'h1a000000;
+//            tx_noncemax <= 32'hffffffff;
 //            tx_new_work <= 1'b1;
 //        end else if (startup_counter <= 10) begin
 //            startup_counter <= startup_counter + 4'd1;
@@ -293,8 +290,8 @@ module uart_comm (
 
             tx_new_work <= meta_new_work_flag[2] ^ meta_new_work_flag[1];
             {tx_midstate, tx_data, tx_noncemin, tx_noncemax} <= meta_job;
-       //     startup_counter <= 4'd12;
-       // end
+//            startup_counter <= 4'd12;
+//        end
 	end
 
 endmodule
