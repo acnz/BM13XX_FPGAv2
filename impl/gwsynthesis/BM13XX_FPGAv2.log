@@ -18,7 +18,7 @@ Compiling module 'uart_tx_fifo'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src
 Extracting RAM for identifier 'mem'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx_fifo.v":16)
 Compiling module 'uart_tx'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx.v":12)
 Compiling module 'CRC32'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\crc32.v":4)
-Compiling module 'sha256_transform(LOOP=6'b001000)'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha256_transform.v":38)
+Compiling module 'sha256_transform(LOOP=6'b010000)'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha256_transform.v":38)
 Compiling module 'sha256_digester'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha256_transform.v":118)
 Compiling module 'e0'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha-256-functions.v":25)
 Compiling module 'e1'("C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\sha-256-functions.v":35)
