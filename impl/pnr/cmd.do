@@ -7,9 +7,15 @@
 -bit
 -tr
 -ph
--timing
+-ireg_not_in_iob
+-oreg_not_in_iob
+-ioreg_not_in_iob
+-replicate
 -cst_error
 -convert_sdp32_36_to_sdp16_18
+-place_option 1
+-route_option 2
+-clock_route_order 1
 -correct_hold 1
 -route_maxfan 23
 -global_freq 100.000
