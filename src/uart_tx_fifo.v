@@ -35,30 +35,44 @@ module uart_tx_fifo (
 	//
 	wire read = ~uart_busy & (cnt > 5'd0) & ~we;
 	wire write = rx_we & (cnt < 5'd31);
-
+    
+    reg [4:0] baud_counter = 5'd0;
+    reg baud_clk = 1'b0;
 	always @ (posedge clk)
 	begin
-		if (write & ~read)
-			cnt <= cnt + 5'd1;
-		else if (read & ~write)
-			cnt <= cnt - 5'd1;
 
-		data <= mem[r_addr];
-
-		if (read)
+		if (baud_counter == 5'd26)
 		begin
-			r_addr <= r_addr + 5'd1;
-			we <= 1'b1;
-		end
-		else
-			we <= 1'b0;
+            baud_clk <= 1'b1;
+            baud_counter <= 5'd0;
 
-		
-		if (write)
-		begin
-			w_addr <= w_addr + 5'd1;
-			mem[w_addr] <= rx_data;
-		end
+            if (write & ~read)
+                cnt <= cnt + 5'd1;
+            else if (read & ~write)
+                cnt <= cnt - 5'd1;
+
+            data <= mem[r_addr];
+
+            if (read)
+            begin
+                r_addr <= r_addr + 5'd1;
+                we <= 1'b1;
+            end
+            else
+                we <= 1'b0;
+
+            
+            if (write)
+            begin
+                w_addr <= w_addr + 5'd1;
+                mem[w_addr] <= rx_data;
+            end
+        end
+        else
+        begin
+            baud_clk <= 1'b0;
+            baud_counter <= baud_counter + 5'd1;
+        end
 	end
 
 endmodule

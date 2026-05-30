@@ -14,21 +14,6 @@ module BM13XX_top (
         .clkin(clk_50m) //input clkin
     );
 
-    reg [4:0] baud_counter = 5'd0;
-    reg baud_clk = 1'b0;
-    always @ (posedge clk_50m)
-    begin
-		if (baud_counter == 5'd26)
-		begin
-            baud_clk <= 1'b1;
-            baud_counter <= 5'd0;
-        end
-        else
-        begin
-            baud_clk <= 1'b0;
-            baud_counter <= baud_counter + 5'd1;
-        end
-    end
 
 //    reg [20:0] led_counter = 21'd0;
 //    reg led_state = 1'b0;
@@ -58,7 +43,7 @@ module BM13XX_top (
 	//
 	// Valid range: [0, 5]
 
-	parameter LOOP_LOG2 = 4;
+	parameter LOOP_LOG2 = 3;
 
     // No need to adjust these parameters
 	localparam [5:0] LOOP = (6'd1 << LOOP_LOG2);
@@ -89,7 +74,7 @@ module BM13XX_top (
         .tx_noncemin(tx_noncemin),
         .tx_noncemax(tx_noncemax),
         // UART Clock Domain
-        .comm_clk(baud_clk),
+        .comm_clk(clk_50m),
         .rx_serial(urx),
         .tx_serial(utx)
     );
@@ -172,7 +157,12 @@ module BM13XX_top (
         end
 
 		// Check to see if the last hash generated is valid.
-		is_golden_ticket <= (hash2[255:224] == 32'h00000000) && !feedback_d1;
+		//is_golden_ticket <= (hash2[255:224] == 32'h00000000) && !feedback_d1;
+        // Verifica os 24 bits inferiores de H7 (Bytes 3, 2 e 1)
+        is_golden_ticket <= (hash2[247:224] == 24'h000000) && !feedback_d1;
+        // Verifica apenas os 16 bits mais baixos de H7 (Bytes 3 e 2)
+        //is_golden_ticket <= (hash2[239:224] == 16'h0000) && !feedback_d1;
+
 		if(is_golden_ticket)
 		begin
 			// TODO: Find a more compact calculation for this
