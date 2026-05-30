@@ -13,9 +13,17 @@ Running routing......
 [70%] Routing Phase 1 completed
 [80%] Routing Phase 2 completed
 [90%] Routing Phase 3 completed
-ERROR  (PR0004) : There are total 240 unrouted nets
+Running timing analysis......
+[95%] Timing analysis completed
+Placement and routing completed
+Bitstream generation in progress......
+Bitstream generation completed
+Running power analysis......
+[100%] Power analysis completed
+Generate file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\pnr\BM13XX_FPGAv2.power.html" completed
 Generate file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\pnr\BM13XX_FPGAv2.pin.html" completed
 Generate file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\pnr\BM13XX_FPGAv2.rpt.html" completed
 Generate file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\pnr\BM13XX_FPGAv2.rpt.txt" completed
-Sat May 30 14:42:54 2026
+Generate file "C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\impl\pnr\BM13XX_FPGAv2.tr.html" completed
+Sat May 30 16:38:12 2026
 

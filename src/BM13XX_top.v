@@ -43,7 +43,7 @@ module BM13XX_top (
 	//
 	// Valid range: [0, 5]
 
-	parameter LOOP_LOG2 = 3;
+	parameter LOOP_LOG2 = 4;
 
     // No need to adjust these parameters
 	localparam [5:0] LOOP = (6'd1 << LOOP_LOG2);

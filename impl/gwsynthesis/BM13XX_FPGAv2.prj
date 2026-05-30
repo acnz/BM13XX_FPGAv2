@@ -13,6 +13,7 @@
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_rx.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx.v" type="verilog"/>
         <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\uart_tx_fifo.v" type="verilog"/>
+        <File path="C:\Users\andre\Documents\FPGA\BM13XX_FPGAv2\src\CRC5.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

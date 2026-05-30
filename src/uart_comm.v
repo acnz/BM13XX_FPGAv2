@@ -81,8 +81,7 @@ module uart_comm (
 
 
 	// Configuration data
-	reg [JOB_SIZE-1:0] current_job = {JOB_SIZE{1'b0}}, queued_job = {JOB_SIZE{1'b0}};
-	reg queued_job_en = 1'b0;
+    reg [JOB_SIZE-1:0] current_job = {JOB_SIZE{1'b0}}; // MANTENHA SÓ ESTA
 	reg new_work_flag = 1'b0;
 
 	// UART Modules
@@ -106,13 +105,14 @@ module uart_comm (
 		.tx_serial (tx_serial)
 	);
 
-	// CRC32 Module
-	wire crc_reset = (state == STATE_IDLE);
+    // CRC5 Module
+	wire crc_reset = (state == STATE_IDLE); 
 	wire crc_we = uart_rx_flag & (state == STATE_IDLE || state == STATE_READ);
 	wire [7:0] crc_data = uart_rx_byte;
-	wire [31:0] crc;
+	
+    wire [4:0] crc; // Importante: O fio agora tem apenas 5 bits!
 
-	CRC32 crc_blk (
+	crc5 crc_blk (
 		.clk (comm_clk),
 		.reset (crc_reset),
 		.rx_we (crc_we),
@@ -121,7 +121,7 @@ module uart_comm (
 	);
 
 	//
-	reg [63:0] system_info = 256'hDEADBEEF13370D13;
+	//reg [63:0] system_info = 256'hDEADBEEF13370D13;
 
 	// RX Message Buffer
 	reg [63:0] outgoing_msg;
@@ -201,33 +201,15 @@ module uart_comm (
 
                 //// Parse packet
                 STATE_PARSE: begin
-                    // By default, we'll send some kind of
-                    // response. Special cases are handled below.
                     length <= 8'd1;
                     msg_length <= 8'd8;
                     state <= STATE_SEND;
 
-                    //if (crc != 32'd0)
-                    //	msg_type <= MSG_RESEND;
-                    if (msg_type == MSG_INFO && msg_length == 8)
+                    // Aceita apenas PUSH_JOB (Ignora INFO, QUEUE, etc)
+                    if (msg_type == MSG_PUSH_JOB && msg_length == (JOB_SIZE/8 + 8))
                     begin
-                        msg_type <= MSG_INFO;
-                        msg_data <= system_info;
-                        msg_length <= 8'd16;
-                    end
-                    else if (msg_type == MSG_PUSH_JOB && msg_length == (JOB_SIZE/8 + 8))
-                    begin
-                        queued_job_en <= 1'b0;
                         current_job <= msg_data[MSG_BUF_LEN*8-32-1:MSG_BUF_LEN*8-32-JOB_SIZE];
                         new_work_flag <= ~new_work_flag;
-
-                        msg_type <= MSG_ACK;
-                    end
-                    else if (msg_type == MSG_QUEUE_JOB && msg_length == (JOB_SIZE/8 + 8))
-                    begin
-                        queued_job_en <= 1'b1;
-                        queued_job <= msg_data[MSG_BUF_LEN*8-32-1:MSG_BUF_LEN*8-32-JOB_SIZE];
-
                         msg_type <= MSG_ACK;
                     end
                     else
